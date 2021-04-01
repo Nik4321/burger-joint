@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppService } from './app.service';
 import { BurgersModule } from './burgers/burgers.module';
 import { Burger } from './burgers/entities/burger.entity';
 
@@ -18,6 +17,6 @@ import { Burger } from './burgers/entities/burger.entity';
     }),
     BurgersModule],
   controllers: [],
-  providers: [AppService],
+  providers: [],
 })
 export class AppModule { }

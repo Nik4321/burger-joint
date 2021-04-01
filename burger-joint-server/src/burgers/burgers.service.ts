@@ -35,13 +35,16 @@ export class BurgersService {
   }
 
   async findOne(id: number): Promise<Burger> {
-    return this.burgerRepository.findOne(id);
+    return await this.burgerRepository.findOne(id);
   }
 
   async findRandom(): Promise<Burger> {
     const burgers = await this.burgerRepository.find();
-    const randomBurgerIndex = Math.floor(Math.random() * burgers.length);
-    console.log(randomBurgerIndex)
-    return burgers[randomBurgerIndex];
+    if (burgers.length > 0) {
+      const randomBurgerIndex = Math.floor(Math.random() * burgers.length);
+      return burgers[randomBurgerIndex];
+    }
+
+    return null;
   };
 }
