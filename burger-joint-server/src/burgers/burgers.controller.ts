@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Get, Param, Post, Req, Res } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, Param, Post, Req } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { Request } from 'express';
 import { IPagedCollection } from 'src/shared/IPagedCollection.interface';
@@ -25,6 +25,16 @@ export class BurgersController {
     });
   }
 
+  @Get('random')
+  async getRandom(): Promise<Burger> {
+    const burger = await this.burgersService.findRandom();
+    if (burger) {
+      return burger;
+    }
+
+    throw new BadRequestException('No Burgers found');
+  }
+
   @Get(':id')
   async getOne(@Param() params): Promise<Burger> {
     const burger = await this.burgersService.findOne(+params.id);
@@ -33,15 +43,5 @@ export class BurgersController {
     }
 
     throw new BadRequestException('Burger not found');
-  }
-
-  @Get('random')
-  async getRandom(): Promise<Burger> {
-    const burger =  await this.burgersService.findRandom();
-    if (burger) {
-      return burger;
-    }
-
-    throw new BadRequestException('No Burgers found');
   }
 }
