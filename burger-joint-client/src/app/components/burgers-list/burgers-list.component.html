@@ -1,0 +1,25 @@
+<div>
+  <form class="burger-search-form" (submit)="burgerSearch($event)">
+    <label class="burger-inlut-label" for="burgerSearch">Search Burger: </label>
+    <input class="burger-input" [(ngModel)]="burgerSearchInput" name="burgerSearch" id="burgerSearch">
+    <button mat-raised-button type="submit" color="primary">Search</button>
+  </form>
+  <div class="mat-grid-list-container" *ngIf="burgersPagedCollection" cols="4" rowHeight="2:1">
+    <div *ngFor="let burger of burgersPagedCollection.collection">
+      <div class="mat-grid-burger">
+        <p>{{ burger.name }}</p>
+        <img [src]="burger.imageUrl" alt="data.name" width="250px" height="250px">
+        <div class="burger-action-button">
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="addBurgerToFavorite(burger)"
+            [disabled]="burgerIsFavorite(burger.id)"
+          >Add to favorites</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-paginator [length]="burgersPagedCollection?.total" [pageSize]="10" [pageSizeOptions]="paginatorPageSizeOptions" (page)="pageEvent($event)">
+  </mat-paginator>
+</div>

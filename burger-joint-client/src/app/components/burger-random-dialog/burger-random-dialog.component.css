@@ -1,0 +1,25 @@
+
+
+.dialog-action-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: center;
+  margin-top: 0
+}
+
+.dialog-burger-name {
+  display: flex;
+  justify-content: center;
+  font-size: '14px';
+}
+
+
+.dialog-image {
+  display: flex;
+  justify-content: center;
+}
+

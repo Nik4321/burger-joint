@@ -1,0 +1,11 @@
+<div class="dialog-container">
+  <h3 class="dialog-header">Congrats</h3>
+  <p class="dialog-burger-name">{{data.name}}</p>
+
+  <div class="dialog-image"  mat-dialog-content>
+    <img [src]="data.imageUrl" alt="data.name" width="300" height="250">
+  </div>
+  <div class="dialog-action-buttons" mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="onClose()">Close</button>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<nav>
+  <div class="nav-wrapper">
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a class="waves-effect waves-light btn" (click)="getRandomBurger()">Random Burger</a></li>
+      <li><a routerLink="/" routerLinkActive="active">Burger List</a></li>
+      <li><a routerLink="/favorite" routerLinkActive="active">Favorite List</a></li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
